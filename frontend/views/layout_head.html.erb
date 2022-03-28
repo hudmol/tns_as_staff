@@ -1,0 +1,20 @@
+<% if @resource && controller_name == 'resources' && ['show', 'edit'].include?(action_name) %>
+  <script type="text/template" id="showDigitalObjectsButtonTemplate">
+    <%=
+    link_to("Show Linked Digital Objects",
+            {:controller => :search,
+             :action => :do_search,
+             "filter_term[]" => ASUtils.to_json('tns_as_staff_digital_object_linked_resource_u_sstr' => @resource.uri)})
+    %>
+  </script>
+  <script>
+    $(function() {
+      $(document).on("loadedrecordform.aspace", function(event, $container) {
+          if (tree && tree.current().data('jsonmodel_type') === 'resource') {
+            $('#other-dropdown .dropdown-menu').append($('<li />').append($(AS.renderTemplate("showDigitalObjectsButtonTemplate"))));
+            $('#other-dropdown').show();
+          }
+      });
+    });
+  </script>
+<% end %>
