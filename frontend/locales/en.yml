@@ -7,3 +7,4 @@ en:
       processing_status_enum_s: Processing Status
       processing_priority_enum_s: Processing Priority
       finding_aid_status_enum_s: Finding Aid Status
+      decades_u_uint: Decade

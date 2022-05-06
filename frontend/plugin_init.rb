@@ -56,16 +56,37 @@ Rails.application.config.after_initialize do
     "enumerations.resource_finding_aid_status.#{facet}"
   })
 
-  # Heavy handed facet display string overrides!
+  # • Date range by decade
+  Plugins.add_search_base_facets('decades_u_uint')
+  [:accession, :resource, :archival_object, :digital_object, :digital_object_component].each do |jsonmodel_type|
+    Plugins.add_search_facets(jsonmodel_type, 'decades_u_uint')
+  end
+
+  # Heavy handed facet overrides!
   SearchResultData.class_eval do
     alias_method :facet_label_string_pre_tns_as_staff, :facet_label_string
     def facet_label_string(facet_group, facet)
-      # • Classification
+      # • Classification display string
       if facet_group == 'classification_paths'
         path = ASUtils.json_parse(facet)
         "#{path.map{|c| c.fetch('identifier')}.join('/')} #{path.last.fetch('title')}"
+
+      # • Date range by decade display string
+      elsif facet_group == 'decades_u_uint'
+        "#{facet}s"
+
       else
         facet_label_string_pre_tns_as_staff(facet_group, facet)
+      end
+    end
+
+    alias_method :sort_facets_pre_tns_as_staff, :sort_facets
+    def sort_facets(facet_group, facets)
+      # • Date range by decade sorting
+      if facet_group == 'decades_u_uint'
+        facets.sort { |a, b| b[0].to_i <=> a[0].to_i }.to_h
+      else
+        sort_facets_pre_tns_as_staff(facet_group, facets)
       end
     end
   end

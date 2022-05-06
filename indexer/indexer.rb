@@ -27,6 +27,12 @@ class IndexerCommon
         end
       end
     end
+
+    indexer.add_document_prepare_hook do |doc, record|
+      if doc.has_key?('years') && !doc['years'].empty?
+        doc['decades_u_uint'] = doc['years'].map{|year| year.to_i - year.to_i % 10}.uniq
+      end
+    end
   end
 
 end
