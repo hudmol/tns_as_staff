@@ -2,7 +2,7 @@
 
   function toggleListing($toggle, $ul) {
     if ($toggle.data('more')) {
-      $ul.find('li:gt(10)').slideUp(() => {
+      $ul.find('li:gt(9)').slideUp(() => {
         $toggle.text('Show more ' + '(' + $ul.find('li:hidden').length + ')')
       });
     } else {
@@ -15,7 +15,7 @@
   }
 
   function setupFilterListing($ul) {
-    $ul.find('li:gt(10)').hide();
+    $ul.find('li:gt(9)').hide();
 
     const $toggle = $('<a>').attr('href', 'javscript:void(0)')
                             .addClass('btn').addClass('btn-default').addClass('btn-xs')
