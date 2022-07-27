@@ -8,3 +8,23 @@ en:
       processing_priority_enum_s: Processing Priority
       finding_aid_status_enum_s: Finding Aid Status
       decades_u_uint: Decade
+    accession:
+      processing_status: Processing Status
+    resource:
+      extent_sort_type_u_sstr: Extent Type
+      repository_processing_note: Repository Processing Note
+  enumerations:
+    collection_management_processing_status:
+      not_yet_processed: Not Yet Processed
+      step_1_completed: Step 1 Completed
+      step_2_completed: Step 2 Completed
+      step_3_completed: Step 3 Completed
+    extent_extent_type:
+      dvd: DVDs
+      item(s): Items
+      folder(s): Folders
+      vhs: VHS Cassettes
+      analog_recordings: Analog Recordings
+      1/4 inch audio cassette: 1/4 inch Audio Cassette
+      1/4 inch audio tape: 1/4 inch Audio Tape
+      16mm_film: 16mm Film
