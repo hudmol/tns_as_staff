@@ -13,6 +13,8 @@ en:
     resource:
       extent_sort_type_u_sstr: Extent Type
       repository_processing_note: Repository Processing Note
+    digital_object:
+      tns_as_staff_digital_object_linked_resource_u_ssort: Resource IDs
   enumerations:
     collection_management_processing_status:
       not_yet_processed: Not Yet Processed

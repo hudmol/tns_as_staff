@@ -68,10 +68,9 @@ module SearchAndBrowseColumnPlugin
       },
       'digital_object' => {
         :add => {
-          'extents' => {
-            :field => 'resource_ids',
+          'tns_as_staff_digital_object_linked_resource_u_ssort' => {
+            :field => 'tns_as_staff_digital_object_linked_resource_u_ssort',
             :sortable => true,
-            :sort_by => 'extents_u_ssort',
           },
         },
       },
